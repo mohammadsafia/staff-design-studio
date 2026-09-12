@@ -1,0 +1,14 @@
+interface:
+  display_name: Staff Design Studio
+  short_description: Lead a specialist UI/UX team from concept to verified UI
+  default_prompt: 'Use $craft-product-ui as my staff design lead: explore directions,
+    build the chosen flow, and independently review the result.'
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
