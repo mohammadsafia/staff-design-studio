@@ -12,35 +12,133 @@ Translate them into deliberate decisions:
 | --- | --- |
 | Composition | Dominant region, reading path, asymmetry or strict grid, density |
 | Typography | Display/body roles, scale contrast, measure, numeric treatment |
-| Color | Neutral foundation, semantic colors, one controlled accent strategy |
+| Color | Neutral foundation, semantic colors, controlled accent strategy |
 | Surfaces | Flat, bordered, elevated, tonal, or image-led—not all at once |
 | Shape | Radius logic, border weight, icon geometry, control silhouette |
 | Media | Photography, illustration, diagrams, textures, or no media |
 | Motion | Feedback, continuity, hierarchy, and reduced-motion behavior |
 
+## Composition and visual weight
+
+Use hierarchy before decoration.
+
+Check:
+- where the eye lands first,
+- whether the main task owns enough visual weight,
+- whether secondary information competes,
+- whether whitespace groups related content,
+- whether alignment creates a deliberate rhythm,
+- whether repeated containers are necessary.
+
+Optical alignment may differ slightly from mathematical alignment. Judge actual rendered shapes, icons and type, not only box coordinates.
+
+## Typography
+
+Define roles rather than arbitrary sizes:
+- display/hero when justified,
+- page heading,
+- section heading,
+- body,
+- secondary/meta,
+- label/control,
+- numeric/tabular data.
+
+Consider:
+- contrast between roles,
+- line length,
+- line height,
+- weight distribution,
+- tabular versus proportional numbers,
+- uppercase/letter-spacing restraint,
+- long strings and translated copy,
+- text scaling.
+
+Do not use more type families or weights than the direction can justify.
+
+## Density and rhythm
+
+Density should match work frequency and content complexity.
+
+Operational tools may need compact but disciplined spacing; marketing surfaces may use larger rhythm. In either case:
+- reuse a spacing logic,
+- avoid arbitrary gaps,
+- give repeated rows/cards predictable rhythm,
+- use separators only when spacing/grouping cannot carry the structure.
+
+## Color and surfaces
+
+Start with semantic hierarchy, then expression.
+
+Define:
+- background/surface hierarchy,
+- text hierarchy,
+- border/divider role,
+- accent role,
+- semantic success/warning/error/info colors,
+- selected/focus state.
+
+Do not rely on color alone. Avoid shadows, gradients, blur and glow on every surface. Elevation should communicate layering, interaction or hierarchy.
+
+## Imagery and illustration
+
+Use media when it explains, differentiates, or creates meaningful emotion.
+
+Specify:
+- subject,
+- crop/coverage,
+- art direction,
+- foreground/background relationship,
+- consistency across the set,
+- responsive behavior,
+- rights/source boundary.
+
+Avoid random stock-like imagery that could belong to any product.
+
 ## Create a signature without friction
 
-Choose one recognizable device connected to the product: a distinctive navigation rhythm, strong editorial typography, a task-specific visualization, a meaningful spatial metaphor, a branded illustration system, or an unusually clear interaction. Keep controls and critical workflows conventional enough to understand immediately.
+Choose one recognizable device connected to the product: distinctive navigation rhythm, editorial typography, task-specific visualization, meaningful spatial metaphor, branded illustration system, or unusually clear interaction.
 
-## Typography, color, and motion
+Keep controls and critical workflows conventional enough to understand immediately.
 
-- Prefer one strong type family or a purposeful display/body pairing. Test long, numeric, accented, and mixed-case content.
-- Start color with functional hierarchy, then add brand expression. Do not rely on color alone for state.
-- Give elevation a consistent meaning. Avoid borders, shadows, gradients, blur, and glow on every surface.
-- Use motion for cause and effect, spatial continuity, input feedback, or attention. Keep a small vocabulary with reduced-motion behavior.
+A signature in an operations product can be exceptional exception prioritization or selection feedback; it need not be spectacle.
 
 ## Originality check
 
-Before committing to substantial new direction, compare two or three compositions using the same content. Differences must survive a grayscale view: emphasis, grouping, reading sequence, task placement or interaction—not recoloring identical cards. Render a representative desktop composition and its narrow-screen adaptation when tools permit. Choose one coherent direction rather than blending all of them.
+Before committing to substantial new direction, compare two or three compositions using the same content.
 
-For each candidate, explain the user task it supports, one signature decision, its cost, and what evidence would make you reject it. In an operational tool, signature can mean excellent selection feedback or exception prioritization; it need not be spectacle. In a marketing page, show actual product value, not invented proof.
+Differences must survive a grayscale view:
+- emphasis,
+- grouping,
+- reading sequence,
+- task placement,
+- interaction model.
 
-Use a removal pass: remove decoration with no informational, emotional or navigational purpose. Then verify the result still has a product-specific identity. Minimalism alone is not originality. Existing brand typography and component shapes are constraints, not defects to eradicate.
+Render a representative desktop composition and narrow-screen adaptation when tools permit. Choose one coherent direction rather than blending all candidates.
 
-For motion, specify trigger, changed property, interruption behavior, final semantic state and reduced-motion alternative. Test rapidly opening/closing, repeated clicks and focus while animation runs. Do not delay input to finish an entrance effect.
+For each candidate state:
+- user task supported,
+- signature decision,
+- main tradeoff,
+- implementation cost,
+- evidence that would make you reject it.
 
-- Could the direction belong unchanged to an unrelated AI, finance, fitness, and travel product? If yes, make it more specific.
+## Removal pass
+
+Remove decoration with no informational, emotional or navigational purpose. Then verify the result still has product-specific identity.
+
+Ask:
+- Could this belong unchanged to an unrelated AI, finance, fitness and travel product?
 - Is the strongest visual decision connected to the product's purpose?
 - Is hierarchy clear without putting a card around everything?
 - Does the interface remain credible with real, imperfect content?
-- Would removing gradients and shadows destroy the hierarchy? If yes, strengthen composition and typography.
+- Would removing gradients/shadows destroy hierarchy?
+- Does the design still work with long text, errors and empty states?
+
+Minimalism alone is not originality. Existing brand typography and component shapes are constraints, not defects to eradicate.
+
+## Motion
+
+Use [motion-and-feedback.md](motion-and-feedback.md) for motion contracts. Do not delay user input to finish decorative entrances.
+
+Useful reference:
+- Apple Human Interface Guidelines, typography/layout/motion: https://developer.apple.com/design/human-interface-guidelines/
