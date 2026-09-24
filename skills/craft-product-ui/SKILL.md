@@ -1,6 +1,6 @@
 ---
 name: craft-product-ui
-description: Staff Design Studio for designing, building, redesigning, and reviewing web product interfaces. Coordinate UX architecture, visual exploration, design systems, implementation, and independent QA with specialist agents for substantial work. Use for distinctive UI, non-generic AI-generated design, SaaS/admin workflows, creative frontend work, design critique, restyling, and interaction hardening. Keep audit and planning requests read-only. Exclude backend-only tasks.
+description: Staff Design Studio for designing, building, redesigning, and reviewing web product interfaces. Coordinate research evidence, UX architecture, visual exploration, design systems, implementation, accessibility, and independent QA for substantial work. Use for distinctive UI, non-generic AI-generated design, SaaS/admin workflows, creative frontend work, design critique, restyling, and interaction hardening. Keep audit and planning requests read-only. Exclude backend-only tasks.
 ---
 
 # Staff Design Studio
@@ -13,7 +13,7 @@ Identify the target, user's requested operation, existing system, and deliverabl
 
 | Mode | Work | Completion |
 | --- | --- | --- |
-| Discover / plan | Goals, risks, journeys, alternatives, recommended direction | Decision-ready proposal; no application edits |
+| Discover / plan | Evidence, goals, risks, journeys, alternatives, recommended direction | Decision-ready proposal; no application edits |
 | Explore | Two or three materially different compositions for the same representative screen | Viewable variants and recommendation; no production replacement |
 | Build / redesign | Brief through implementation and verification | Working scoped journey plus evidence |
 | Audit / review | Inspect current rendering, behavior, source or diff | Severity-ranked findings; no fixes unless requested |
@@ -27,9 +27,21 @@ Small change: inspect, fix if authorized, test the affected behavior; skip multi
 
 ## Read the applicable resources
 
+Load only what the task needs:
+
+- Uncertain user needs, claims, analytics, research or assumptions: [research-and-evidence.md](references/research-and-evidence.md).
 - New visual language or exploration: [visual-direction.md](references/visual-direction.md).
-- Forms, workflows, tables or complex interactions: [ux-and-states.md](references/ux-and-states.md).
+- Journey/state coverage and failure recovery: [ux-and-states.md](references/ux-and-states.md).
+- Audit or redesign diagnosis: [usability-heuristics.md](references/usability-heuristics.md).
+- Navigation, routing, scope or information architecture: [navigation-and-ia.md](references/navigation-and-ia.md).
+- Forms, onboarding, settings, validation or UI copy: [forms-and-content.md](references/forms-and-content.md).
+- Dialogs, comboboxes, grids, menus, tabs or other complex widgets: [interaction-patterns.md](references/interaction-patterns.md).
+- Any user-facing implementation with accessibility impact: [accessibility.md](references/accessibility.md).
+- SaaS/admin/POS, dashboards, tables, filters or operational tools: [data-dense-products.md](references/data-dense-products.md).
+- Responsive layout, mobile adaptation, RTL or multiple input modes: [responsive-and-input.md](references/responsive-and-input.md).
+- Animation, progress, optimistic UI or notifications: [motion-and-feedback.md](references/motion-and-feedback.md).
 - Product-wide work or design drift: [design-contract.md](references/design-contract.md).
+- AI-generated or AI-refactored substantial UI: [ai-ux-quality-gates.md](references/ai-ux-quality-gates.md).
 - Delegated substantial work: [agent-team.md](references/agent-team.md) and the assigned role file.
 - Any implementation completion or review: [implementation-qa.md](references/implementation-qa.md).
 - Upstream tool integration or explaining this synthesis: [source-integration.md](references/source-integration.md).
@@ -37,17 +49,19 @@ Small change: inspect, fix if authorized, test the affected behavior; skip multi
 
 Load only applicable references. Main agent reads required instructions itself before delegating.
 
-## 1. Establish facts and risks
+## 1. Establish facts, evidence and risks
 
 Read repository instructions, product docs, existing tokens/components, dependencies and relevant screens. Capture a baseline screenshot when changing existing UI and tools permit.
 
-Separate known facts, assumptions and unanswered questions. Identify primary user, task frequency, costly mistakes, working device, locale, success criterion and constraints. Ask only material questions. Never invent user interviews, analytics, customer endorsements or measured results.
+Separate facts, observations, research findings, analytics signals, stakeholder claims, assumptions and unanswered questions. Identify primary user, task frequency, costly mistakes, working device, locale, success criterion and constraints. Ask only material questions. Never invent user interviews, analytics, customer endorsements or measured results.
 
-For larger work, reuse or update the existing product brief and design contract using the contract reference. Do not create competing sources of truth.
+For consequential uncertainty, maintain a compact evidence ledger and identify what would falsify the current design assumption. For larger work, reuse or update the existing product brief and design contract rather than creating competing sources of truth.
 
-## 2. Design the journey and explore
+## 2. Design the journey before the surface
 
 Model the main journey and its recovery paths before arranging widgets. Every major visible action needs a state transition or honest explanation of why unavailable.
+
+Resolve navigation, form behavior, permission boundaries, content hierarchy, error recovery and dense-data decisions using the applicable references. Treat asynchronous behavior, bulk actions, destructive actions, scope switching and unsaved work as product contracts rather than visual details.
 
 For substantial new visual direction, develop two or three concepts with the SAME realistic content. Vary information layout, emphasis or interaction model, not just colors. Use viewable low-cost compositions when tools permit; prose alone is not a visual comparison. Do not build three complete applications.
 
@@ -59,26 +73,38 @@ Use references as evidence for a specific property, not as templates to copy who
 
 Resolve conflicts in this order: authority and explicit requirements; safe and accessible task completion; established product behavior and system compatibility; maintainability/performance; aesthetic preferences. Explain genuine conflicts rather than silently discarding a requirement.
 
-Record accepted direction, rejected alternatives, tokens, component states, responsive adaptations and exceptions. Existing code is evidence of the current system, not proof every inconsistency is intentional. Propose the smallest coherent correction.
+Record accepted direction, rejected alternatives, evidence, tokens, component states, responsive adaptations, content rules and exceptions. Existing code is evidence of the current system, not proof every inconsistency is intentional. Propose the smallest coherent correction.
 
 Do not enforce universal bans on fonts, colors, cards, gradients or rounded corners. Their appropriateness depends on the brief. Do not replace one recognizable AI template with another.
 
 ## 4. Implement the smallest complete slice
 
-Preserve the stack and existing primitives. Assign one owner to shared tokens, global CSS and shared components. Build a representative journey with realistic data, recovery states, responsive behavior and semantic controls before expanding to sibling screens.
+Preserve the stack and existing primitives. Assign one owner to shared tokens, global CSS and shared components. Build a representative journey with realistic data, recovery states, responsive behavior, semantic controls and accessibility before expanding to sibling screens.
 
 Distinguish prototype simulation from actual server persistence and authorization. Never imply UI role hiding secures an API, fake payment success proves a transaction, or a toast proves a save. Label unavailable integrations and mock-only behavior.
 
 Use purpose-specific motion with interruption handling and reduced-motion alternatives. Keep truthful feedback ahead of ornament. Do not add dependencies or external services solely because an upstream example uses them.
 
+For AI-generated implementation, treat the output as a hypothesis. Apply the AI UX quality gates before scaling a pattern across multiple screens.
+
 ## 5. Review independently and close the loop
 
 For substantial work, request independent rendered UX/visual review and relevant functional checks using the team contract. For small work, review locally. Never claim independence when performed by the same agent.
 
+Review against:
+- journey completion and recovery,
+- heuristic failures,
+- interaction contracts,
+- accessibility,
+- responsive/content pressure,
+- design-system coherence,
+- performance/perceived responsiveness,
+- product-specific visual quality.
+
 Track findings with severity, evidence, reproduction, proposed correction and retest. Fix blockers before aesthetic refinement. After fixes, review the actual changed state again. Stop after two critique/fix cycles by default; disclose unresolved issues and ask before a costly expansion. Never lower the acceptance bar to claim completion.
 
-No screenshot access: report visual QA unverified. No runnable environment: report behavior unverified. Source inspection, build success and reviewer agreement do not establish usability or freedom from bugs.
+No screenshot access: report visual QA unverified. No runnable environment: report behavior unverified. No assistive-technology test: do not claim full accessibility compliance. Source inspection, build success and reviewer agreement do not establish usability or freedom from bugs.
 
 ## Handoff
 
-State what changed, why the direction fits, which workflow works, evidence checked, mock boundaries and remaining risks. Keep the response concise; link requested artifacts through the host's supported mechanism. Do not claim staff-designer equivalence, automatic aesthetic scores, production readiness or empirical superiority without corresponding evidence.
+State what changed, why the direction fits, which workflow works, evidence checked, assumptions, mock boundaries and remaining risks. Keep the response concise; link requested artifacts through the host's supported mechanism. Do not claim staff-designer equivalence, automatic aesthetic scores, production readiness or empirical superiority without corresponding evidence.
