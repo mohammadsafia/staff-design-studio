@@ -1,10 +1,19 @@
 # UX and State Coverage
 
-Use this reference for task-oriented interfaces and multi-step products.
+Use this reference for task-oriented interfaces and multi-step products. Pair it with the more specific references when forms, navigation, dense data, accessibility, or complex widgets dominate the task.
 
 ## Model the journey
 
 For each important user type, define the entry point, goal, success condition, required information, decisions, primary path, recoverable mistakes, completion feedback, and next useful action. Design the most important end-to-end path first.
+
+Also identify:
+- frequency and expertise,
+- expensive or irreversible mistakes,
+- handoffs to another person/system,
+- waiting states,
+- permission boundaries,
+- scope changes,
+- abandonment and resume behavior.
 
 ## State matrix
 
@@ -17,28 +26,64 @@ Cover applicable states for each data-bound region or action:
 | Access | Allowed, read-only, hidden, unauthorized, upgrade-required |
 | Form | Untouched, incomplete, invalid, valid, server-rejected, saved, unsaved |
 | Collection | Few, many, long values, missing values, duplicates, pagination/end |
+| Sync | Local-only, pending, synced, conflict, retrying |
+| Background work | Queued, running, completed, partially completed, failed, cancelled |
 
 Do not render every state simultaneously. Provide realistic scenarios or controls that make important states testable.
 
-## Information architecture and decisions
+## State-transition contract
 
-- Organize navigation around goals and domain language.
-- Keep route names, titles, breadcrumbs, tabs, and selected states consistent.
-- Make scope clear, especially in multi-tenant or multi-project products.
-- Ask only for information needed at the current step.
-- Put labels outside placeholders and preserve entered values after errors.
-- Show units, formats, constraints, defaults, and consequences near the control.
-- Confirm irreversible actions; offer undo when practical.
+For consequential actions, define:
+
+1. precondition,
+2. user trigger,
+3. immediate feedback,
+4. pending state,
+5. success state,
+6. failure state,
+7. retry/cancel behavior,
+8. what data is preserved,
+9. what happens if the user navigates away,
+10. whether the operation is safe to repeat.
+
+This is especially important for saves, uploads, approvals, payments, bookings, destructive actions, batch work and background jobs.
+
+## Decision clarity
+
+At each decision point, the user should understand:
+- what they are choosing,
+- relevant context,
+- consequence,
+- default if no action is taken,
+- whether the choice is reversible,
+- what happens next.
+
+Avoid presenting multiple visually equal actions when their consequence is not equal.
+
+## Information architecture and content
+
+Use [navigation-and-ia.md](navigation-and-ia.md) for route/scope structure and [forms-and-content.md](forms-and-content.md) for field/content behavior.
+
+Core rules:
+- organize around goals and domain language,
+- keep scope explicit,
+- ask only for information needed now,
+- preserve entered values after errors,
+- show units, formats, constraints, defaults and consequences near the control,
+- keep recovery near the failure.
 
 ## Dense tools
 
-- Help the user identify what changed, what needs attention, and what action to take.
-- Use charts when shape, comparison, or trend matters; use exact values when precision matters.
-- Keep filtering and sorting visible and reversible.
-- Support long labels, zero values, nulls, outliers, and realistic record counts.
-- Keep row actions discoverable without turning every cell into a competing control.
+Use [data-dense-products.md](data-dense-products.md) for tables, dashboards, filters, bulk actions and operational workflows.
 
-Use domain-realistic names, values, dates, statuses, and edge cases. Avoid lorem ipsum, repeated cards, and data that exists only to balance the layout.
+At minimum:
+- help the user identify what changed, what needs attention, and what action to take,
+- keep filtering/sorting visible and reversible,
+- support long labels, zero values, nulls, outliers and realistic counts,
+- keep row actions discoverable,
+- make selection scope explicit.
+
+Use domain-realistic names, values, dates, statuses and edge cases. Avoid lorem ipsum, repeated cards, and data that exists only to balance the layout.
 
 ## Failure-prone interaction contracts
 
@@ -50,14 +95,19 @@ Use domain-realistic names, values, dates, statuses, and edge cases. Avoid lorem
 | Editing | Dirty state, validation, permission loss and conflict policy | Failed save preserves edits; unsaved navigation has defined behavior |
 | Booking/payment | Availability or price recheck; duplicate submission; pending outcome | Stale availability recovers; failure never displays success; mock results labeled |
 | Dialog/drawer | Focus entry, containment where appropriate, escape and return | Complete with keyboard; focus returns to a meaningful surviving control |
-| Responsive table | Which comparison must remain available at narrow widths | Essential values/actions remain accessible; scrolling is deliberate and labeled |
+| Responsive table | Which comparison must remain available at narrow widths | Essential values/actions remain accessible; scrolling is deliberate |
+| Background job | Leave/stay behavior, progress, retry, partial completion | Refresh/revisit does not turn unknown state into false success |
 
 Use confirmation proportional to impact. Offer undo only if the underlying action is actually reversible. Do not imply a disabled or hidden button enforces server authorization.
 
 ## Localization and content pressure
 
-When multilingual or RTL support is required, test actual target-language content, logical CSS properties, mixed-direction IDs/emails and number/date formatting. Mirror directional navigation where meaningful, not every icon. Test longer translated labels and font fallback without disabling zoom. Do not add a locale requirement the user did not request.
+When multilingual or RTL support is required, use [responsive-and-input.md](responsive-and-input.md).
+
+Test actual target-language content, logical CSS properties, mixed-direction IDs/emails and number/date formatting. Mirror directional navigation where meaningful, not every icon. Test longer translated labels and font fallback without disabling zoom.
 
 ## Operational test fixtures
 
-Include zero records, one record, many records, long identifiers, missing optional values, a permission-limited user and at least one recoverable failure when relevant. Keep fixtures deterministic so the same bug can be reproduced. Expose simulated states in a clearly separate demo/test mechanism rather than cluttering production navigation.
+Include zero records, one record, realistic many records, long identifiers, missing optional values, a permission-limited user and at least one recoverable failure when relevant. Add stale/conflicting data when the workflow can encounter it.
+
+Keep fixtures deterministic so the same bug can be reproduced. Expose simulated states in a clearly separate demo/test mechanism rather than cluttering production navigation.
