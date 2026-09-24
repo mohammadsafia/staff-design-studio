@@ -1,11 +1,13 @@
 # Staff Design Studio
 
-A reusable UI/UX skill for brief-driven visual design, working product journeys, responsive implementation, and evidence-based review.
+A reusable UI/UX skill for evidence-aware product design, distinctive visual direction, working product journeys, responsive implementation, accessibility, and reproducible review.
 
 **Skill name:** `craft-product-ui`  
 **Display name:** Staff Design Studio
 
 Use it to build distinctive interfaces, improve existing UX, implement approved references, and find interaction bugs. It includes five specialist role contracts: UX architect, art director, systems designer, frontend engineer, and design reviewer.
+
+The skill keeps the core orchestration file compact and loads targeted references only when needed: research/evidence, usability heuristics, navigation/IA, forms/content, interaction patterns, accessibility, dense SaaS tools, responsive/RTL behavior, visual craft, motion/feedback, AI UX quality gates, design contracts, and implementation QA.
 
 ## Quick installation
 
@@ -63,25 +65,47 @@ Explicitly name the skill in your request. Include your app, intended users, sco
 
 ### Build a feature
 
-> Use craft-product-ui to design and implement our inventory page. Users need to find low-stock products and prepare replenishment requests. Preserve our stack and existing components. Include realistic data, loading, empty, error, and success states. Verify the main workflow and mobile layout.
+> Use craft-product-ui to design and implement our inventory page. Users need to find low-stock products and prepare replenishment requests. Preserve our stack and existing components. Include realistic data, loading, empty, stale, error and success states. Verify the main workflow, keyboard path and mobile layout.
 
 ### Redesign an existing interface
 
-> Use craft-product-ui to improve this dashboard. First inspect the existing UI and capture a baseline. Show two materially different visual directions with the same content, then wait for my selection before implementation. Preserve business behavior and verify the selected result.
+> Use craft-product-ui to improve this dashboard. First inspect the existing UI and capture a baseline. Separate facts from assumptions, show two materially different visual directions with the same content, then wait for my selection before implementation. Preserve business behavior and verify the selected result.
 
 ### Implement a reference
 
-> Use craft-product-ui to implement this approved screenshot. Preserve the composition, image coverage, typography hierarchy, and CTA placement. Adapt it for mobile and compare actual browser screenshots with the reference.
+> Use craft-product-ui to implement this approved screenshot. Preserve the composition, image coverage, typography hierarchy and CTA placement. Adapt it for narrow layouts and compare actual browser screenshots with the reference.
 
 ### Audit without editing
 
-> Use craft-product-ui to review our checkout flow. Do not change files. Report UX, visual, accessibility, and interaction findings with severity, reproduction steps, and evidence.
+> Use craft-product-ui to review our checkout flow. Do not change files. Report UX, visual, accessibility and interaction findings with severity, reproduction steps and evidence.
 
 ### Fix a small issue
 
-> Use craft-product-ui to fix this mobile menu overlap. Keep the change focused and verify the affected interaction at narrow widths.
+> Use craft-product-ui to fix this mobile menu overlap. Keep the change focused and verify the affected interaction at narrow and intermediate widths.
 
-Small fixes follow a lightweight path. Substantial design work uses the full workflow: understand the journey, explore when appropriate, implement, review, and retest.
+Small fixes follow a lightweight path. Substantial design work uses the full workflow: establish evidence, understand the journey, explore when appropriate, implement, review, and retest.
+
+## Reference architecture
+
+The main skill routes tasks to focused guidance under `skills/craft-product-ui/references/`.
+
+Key references include:
+- research and evidence classification,
+- usability heuristics,
+- UX/state-transition coverage,
+- navigation and information architecture,
+- forms and content design,
+- interaction-pattern semantics,
+- WCAG-oriented accessibility,
+- data-dense SaaS/admin workflows,
+- responsive, RTL and input adaptation,
+- visual direction and craft,
+- motion and feedback,
+- AI-generated UI quality gates,
+- design contracts,
+- implementation QA and evaluation.
+
+These are decision contracts and acceptance criteria, not a universal visual style.
 
 ## Make it the default for UI/UX work
 
@@ -101,7 +125,8 @@ For UI/UX design, implementation, review, restyling, and bug-fixing tasks:
 - If installed elsewhere, resolve and read its actual installed location.
 - Preserve the app's design system, architecture, and business behavior.
 - Compare rendered results with approved references when provided.
-- Verify relevant interactions and responsive layouts.
+- Verify relevant interactions, accessibility, and responsive layouts.
+- Treat substantial AI-generated UI as a hypothesis and apply the skill's quality gates.
 - Use independent review for substantial changes when delegation is available.
 - Keep small fixes lightweight; skip this workflow for backend-only tasks.
 - If the skill is unavailable, report that honestly and follow existing app rules.
@@ -117,7 +142,7 @@ See the official [Codex skill discovery](https://learn.chatgpt.com/docs/build-sk
 
 | Role | Responsibility |
 | --- | --- |
-| UX architect | User journeys, information architecture, recovery paths |
+| UX architect | Evidence, journeys, information architecture, recovery paths |
 | Art director | Visual concepts, composition, typography, brand fit |
 | Systems designer | Tokens, reusable components, states, consistency |
 | Frontend engineer | Implementation, responsive behavior, interactions |
@@ -139,10 +164,14 @@ For team projects, review skill updates through PRs so changes to the design wor
 
 Includes discovery, exploration, build, audit, restyle, hardening, and polish workflows. Audit-only requests stay read-only. Visual and interaction checks require suitable browser or rendering tools; the agent must report unavailable checks honestly.
 
-Used in constructed before/after demonstrations and a bilingual eight-page NEU public website prototype. These exercises are not controlled benchmarks and do not prove general superiority or production readiness. Human review remains necessary. Neither website source nor customer material is bundled here.
+Generated interfaces are treated as design hypotheses until applicable journey, interaction, accessibility, responsive, and visual checks are performed. Human/user validation remains necessary when uncertainty or consequence warrants it.
 
-## Attribution
+Used in constructed before/after demonstrations and a bilingual eight-page NEU public website prototype. These exercises are not controlled benchmarks and do not prove general superiority or production readiness. Neither website source nor customer material is bundled here.
 
-This is an original synthesis informed by UI UX Pro Max, Anthropic frontend-design, Impeccable, and public DesignMotion material. Those projects are not bundled, and their tools or datasets are not implicitly installed.
+## Attribution and research
+
+This is an original synthesis informed by UI UX Pro Max, Anthropic frontend-design, Impeccable, public DesignMotion material, and authoritative public UX/accessibility/platform guidance including Nielsen Norman Group, W3C/WAI, GOV.UK, Apple HIG, and web.dev.
+
+Those projects and organizations are not bundled, and their tools or datasets are not implicitly installed.
 
 See [source integration and research limits](skills/craft-product-ui/references/source-integration.md).

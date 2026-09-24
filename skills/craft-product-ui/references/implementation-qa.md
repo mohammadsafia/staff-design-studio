@@ -1,46 +1,119 @@
 # Implementation QA
 
-Use this reference before completing a coded interface.
+Use this reference before completing a coded interface. For substantial AI-generated UI also apply [ai-ux-quality-gates.md](ai-ux-quality-gates.md).
 
 ## Functional pass
 
 - Start the application using the repository's documented command.
 - Exercise the main journey from entry to completion.
-- Test navigation, forms, menus, dialogs, filters, sorting, pagination, and destructive actions.
-- Confirm loading, empty, validation, permission, error, success, and retry behavior where applicable.
-- Check for runtime, console, hydration, and network errors caused by the implementation.
+- Test navigation, forms, menus, dialogs, filters, sorting, pagination, selection and destructive actions.
+- Confirm loading, empty, stale, validation, permission, error, success and retry behavior where applicable.
+- Test rapid/repeated input for duplicate-submit and async race failures.
+- Test unsaved edits, cancellation and scope switches where relevant.
+- Check runtime, console, hydration and network errors caused by the implementation.
 
 ## Visual pass
 
-Capture representative screenshots at approximately 360–390 px mobile, 768–1024 px tablet/narrow desktop, 1280–1440 px desktop, and a wide viewport when relevant.
+Capture representative screenshots at:
+- a narrow mobile width,
+- an intermediate pressure width,
+- a normal desktop width,
+- a wide viewport when relevant.
 
-Inspect hierarchy, alignment, spacing, density, text wrapping, truncation, overflow, image cropping, fixed regions, overlays, z-index, interaction states, skeleton-to-content layout shift, and supported themes. Repeat the screenshot pass after fixes.
+Common reference ranges such as 360–390, 768–1024 and 1280–1440 px are useful test points, not design requirements.
+
+Inspect:
+- hierarchy and reading path,
+- alignment and optical balance,
+- spacing rhythm and density,
+- text wrapping/truncation,
+- overflow and deliberate scrolling,
+- image cropping,
+- fixed/sticky regions,
+- overlays and z-index,
+- interaction states,
+- skeleton-to-content layout shift,
+- long/realistic content,
+- supported themes.
+
+Repeat the screenshot pass after fixes.
 
 ## Accessibility pass
 
-- Navigate the primary journey with a keyboard.
-- Confirm visible focus and logical focus order.
-- Confirm icon-only controls have accessible names.
-- Check headings, landmarks, labels, error association, and dialog focus.
-- Check contrast, zoom/reflow, touch targets, and reduced motion.
+Apply [accessibility.md](accessibility.md).
+
+At minimum:
+- navigate the primary journey with keyboard,
+- confirm visible, unobscured focus and logical focus order,
+- verify icon-only controls have accessible names,
+- check headings, landmarks, labels and error association,
+- verify dialog/composite-widget focus behavior,
+- check contrast and non-color state cues,
+- check zoom/reflow and text enlargement,
+- check target sizing/spacing where relevant,
+- check reduced motion.
+
+Do not infer screen-reader compatibility solely from semantic-looking source.
+
+## Responsive and localization pass
+
+Apply [responsive-and-input.md](responsive-and-input.md).
+
+Test:
+- intermediate resizing, not endpoints only,
+- long headings/labels,
+- enlarged text,
+- mixed identifiers,
+- target locale/RTL when in scope,
+- touch versus hover-only interactions.
+
+## Perceived performance pass
+
+Check:
+- visible response after input,
+- blocking spinners,
+- unnecessary full-page loading,
+- layout shift,
+- expensive effects,
+- slow search/filter response,
+- animation jank.
+
+Measure performance only with the project's available tools. Do not invent metrics. If INP/Core Web Vitals are material and measurable, record actual results.
 
 ## Engineering pass
 
-- Run relevant type checks, linting, unit tests, and the production build.
-- Avoid new warnings, duplicated primitives, unexplained magic values, and unused dependencies.
-- Confirm responsive images, lazy loading, and expensive effects are appropriate.
-- Test with realistic record counts and long content, not only an ideal fixture.
+- Run relevant type checks, linting, unit tests and production build.
+- Avoid new warnings, duplicated primitives, unexplained magic values and unused dependencies.
+- Confirm responsive images, lazy loading and expensive effects are appropriate.
+- Test realistic record counts and long content, not only ideal fixtures.
+- Add a regression test for fixed behavior when practical within the existing test stack.
 
-## Completion threshold
+## Evidence ledger
 
-Maintain a compact evidence ledger for substantial work: criterion, route/state, viewport/input method, method/command, observed result and evidence location. Mark each pass, fail or unverified. Record actual test output; never infer test success from the existence of a test file.
+For substantial work record:
 
-Review blocker: data loss, falsely reported success, inaccessible essential action, broken core journey or permission exposure. Major: recovery missing, responsive task blockage, deceptive state or severe hierarchy problem. Minor: localized consistency or polish. Preference: a viable aesthetic alternative without demonstrated task harm. Do not average away a blocker with a high visual score.
+| Criterion | Route/state | Viewport/input | Method | Observed result | Status | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
 
-For fixes, add a regression test where practical using the project's existing tools. For visual changes compare before/after at the same content and viewport. Inspect at least one intermediate width; endpoint screenshots can miss breakpoint failures. Screenshots cannot prove focus, accessible names or async correctness; test those separately.
+Use pass, fail or unverified. Record actual output; never infer test success from the existence of a test file.
 
-No browser: source findings are hypotheses about rendering unless directly demonstrated otherwise. No backend: integration outcomes are simulated. No screen-reader test: report keyboard/semantic checks without claiming full accessibility compliance. Do not install a test framework or run external business actions solely to complete a checklist.
+## Severity
+
+- **Blocker:** data loss, false success, permission exposure, inaccessible essential action, or broken core journey.
+- **Major:** recovery missing, repeated failure, responsive task blockage, deceptive state, or severe hierarchy/accessibility problem.
+- **Minor:** localized consistency, clarity or polish issue with a workaround.
+- **Preference:** viable aesthetic alternative without demonstrated task harm.
+
+Do not average away a blocker with a high visual score.
+
+## Boundaries
+
+No browser: rendering findings remain hypotheses unless directly demonstrated.  
+No backend: integration outcomes are simulated.  
+No screen-reader test: report keyboard/semantic checks without claiming full accessibility compliance.
+
+Do not install a test framework or perform real external business actions solely to complete a checklist.
 
 After at most two normal review/fix cycles, report unresolved findings with their impact rather than endlessly polishing or claiming readiness. Expand only if authorized and justified.
 
-Do not call the interface production-ready while critical controls are inert, the main journey is incomplete, common states are absent, mobile layout is broken, keyboard use is blocked, or runtime errors remain. Report any unverified area plainly.
+Do not call the interface production-ready while critical controls are inert, the main journey is incomplete, common states are absent, responsive layout blocks the task, keyboard use is blocked, or runtime errors remain.
