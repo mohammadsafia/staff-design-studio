@@ -1,0 +1,28 @@
+{
+  "id": "invite-team",
+  "brief": "showcases/01-invite-team.md",
+  "route": "?benchmark=invite-team",
+  "implementation": ["src/invite/model.js", "src/invite/view.js", "src/invite/style.css"],
+  "invariants": ["INV-06", "INV-07", "INV-09", "INV-10", "INV-11", "INV-12"],
+  "assumptions": [
+    "All displayed active, invited and pending records reserve one of five seats. The benchmark does not specify pending-seat accounting.",
+    "The empty fixture has no listed members; the viewing owner's permission is simulated independently.",
+    "Viewer is the safe default. Editor changes notes but cannot manage people or billing.",
+    "Only an in-memory mock service is exercised. No email, backend, persistence, billing or real authorization exists."
+  ],
+  "criteria": [
+    {"id":"INV-01","requirement":"Email has a persistent programmatic label","check":"tests/invite/view.test.mjs","method":"DOM"},
+    {"id":"INV-02","requirement":"Role meaning is available before selection","check":"tests/invite/view.test.mjs","method":"DOM"},
+    {"id":"INV-03","requirement":"Seat count is visible before committing","check":"tests/invite/view.test.mjs","method":"DOM + browser visual"},
+    {"id":"INV-04","requirement":"CTA names the action","check":"tests/invite/view.test.mjs","method":"DOM"},
+    {"id":"INV-05","requirement":"Active, Invited and Pending differ without color alone","check":"tests/invite/view.test.mjs","method":"DOM + browser visual"},
+    {"id":"INV-06","requirement":"Duplicate sending is controlled","check":"tests/invite/model.test.mjs","method":"model + DOM"},
+    {"id":"INV-07","requirement":"Failure preserves email and role","check":"tests/invite/model.test.mjs","method":"model + DOM"},
+    {"id":"INV-08","requirement":"Error explains recovery","check":"tests/invite/view.test.mjs","method":"DOM"},
+    {"id":"INV-09","requirement":"Removal is named and keyboard-operable","check":"tests/invite/view.test.mjs","method":"DOM + browser keyboard"},
+    {"id":"INV-10","requirement":"Main task is reachable at narrow and intermediate widths","check":"showcases/01-invite-team/REVIEW.md","method":"browser visual + keyboard"},
+    {"id":"INV-11","requirement":"No state falsely reports server success","check":"tests/invite/model.test.mjs","method":"model + DOM"},
+    {"id":"INV-12","requirement":"Preserve the five-seat limit and existing member data; no invented billing","check":"tests/invite/model.test.mjs","method":"model"}
+  ],
+  "unmeasured": ["Under-30-second completion target", "Assistive-technology behavior", "Contrast and rendered focus", "General skill superiority"]
+}

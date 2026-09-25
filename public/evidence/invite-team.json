@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "case": "invite-team",
+  "recordedAt": "2026-09-25T16:40:50.774Z",
+  "revision": "2a0df632bfefeb4a1cfaa2ece76c185cf6dc1224",
+  "dirty": true,
+  "fingerprint": "1444333e09bbe20da0da4e144afc146427b9cdf1b9dc840988082912095e33ec",
+  "inputs": [
+    "index.html",
+    "package-lock.json",
+    "package.json",
+    "scripts/check-interactions.mjs",
+    "scripts/check-landings.mjs",
+    "scripts/evidence-state.mjs",
+    "scripts/fingerprint.mjs",
+    "scripts/verify.mjs",
+    "showcases/01-invite-team.md",
+    "showcases/01-invite-team/contract.json",
+    "skills/craft-product-ui/SKILL.md",
+    "skills/craft-product-ui/agents/art-director.md",
+    "skills/craft-product-ui/agents/design-reviewer.md",
+    "skills/craft-product-ui/agents/frontend-engineer.md",
+    "skills/craft-product-ui/agents/openai.yaml",
+    "skills/craft-product-ui/agents/systems-designer.md",
+    "skills/craft-product-ui/agents/ux-architect.md",
+    "skills/craft-product-ui/assets/icon.svg",
+    "skills/craft-product-ui/references/accessibility.md",
+    "skills/craft-product-ui/references/agent-team.md",
+    "skills/craft-product-ui/references/ai-ux-quality-gates.md",
+    "skills/craft-product-ui/references/data-dense-products.md",
+    "skills/craft-product-ui/references/design-contract.md",
+    "skills/craft-product-ui/references/evaluation.md",
+    "skills/craft-product-ui/references/forms-and-content.md",
+    "skills/craft-product-ui/references/implementation-qa.md",
+    "skills/craft-product-ui/references/interaction-patterns.md",
+    "skills/craft-product-ui/references/landing-pages.md",
+    "skills/craft-product-ui/references/motion-and-feedback.md",
+    "skills/craft-product-ui/references/navigation-and-ia.md",
+    "skills/craft-product-ui/references/research-and-evidence.md",
+    "skills/craft-product-ui/references/responsive-and-input.md",
+    "skills/craft-product-ui/references/source-integration.md",
+    "skills/craft-product-ui/references/usability-heuristics.md",
+    "skills/craft-product-ui/references/ux-and-states.md",
+    "skills/craft-product-ui/references/visual-direction.md",
+    "src/cases.js",
+    "src/evidence.js",
+    "src/invite/model.js",
+    "src/invite/style.css",
+    "src/invite/view.js",
+    "src/landing.css",
+    "src/landings.js",
+    "src/main.js",
+    "src/screens.js",
+    "src/style.css",
+    "tests/evidence.test.mjs",
+    "tests/invite/model.test.mjs",
+    "tests/invite/view.test.mjs",
+    "vite.config.js"
+  ],
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "browser": "not exercised by this command"
+  },
+  "commands": [
+    {
+      "name": "Invite model and DOM",
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node --test --test-reporter=spec tests/invite/model.test.mjs tests/invite/view.test.mjs tests/evidence.test.mjs",
+      "status": "pass"
+    },
+    {
+      "name": "Production build",
+      "command": "npm run build",
+      "status": "pass"
+    },
+    {
+      "name": "Showcase shell DOM",
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/check-interactions.mjs",
+      "status": "pass"
+    },
+    {
+      "name": "Landing page DOM",
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/check-landings.mjs",
+      "status": "pass"
+    }
+  ],
+  "artifacts": {
+    "evidence/verification.log": "ac07815dd851080d7a28b0ed0becc5d12f8e763dcde1a243e7b624c982da27e7"
+  },
+  "checks": [
+    {
+      "method": "Model + JSDOM",
+      "status": "pass",
+      "result": "Invite assertions exercise form submission, retained drafts, retry, duplicate protection, a seat race, named controls, DOM focus management and fixture cancellation. No browser rendering or physical keyboard input is exercised."
+    },
+    {
+      "method": "Production build",
+      "status": "pass",
+      "result": "Vite compiled the site and copied skill references."
+    },
+    {
+      "method": "Built DOM regression",
+      "status": "pass",
+      "result": "Six comparison shells and three landing-page demos were exercised in JSDOM. Preview class selection does not establish responsive layout."
+    },
+    {
+      "method": "Browser / visual / keyboard",
+      "status": "unverified",
+      "result": "No browser checks run in this command. Layout at 390/820/1440 px, real keyboard traversal, assistive technology and final screenshots require a separate recorded review."
+    }
+  ],
+  "requirements": [
+    {
+      "id": "INV-01",
+      "requirement": "Email has a persistent programmatic label",
+      "method": "DOM",
+      "status": "pass",
+      "artifact": "evidence/verification.log",
+      "note": "Scoped to the local model/DOM contract; no real integration tested."
+    },
+    {
+      "id": "INV-02",
+      "requirement": "Role meaning is available before selection",
+      "method": "DOM",
+      "status": "pass",
+      "artifact": "evidence/verification.log",
+      "note": "Scoped to the local model/DOM contract; no real integration tested."
+    },
+    {
+      "id": "INV-03",
+      "requirement": "Seat count is visible before committing",
+      "method": "DOM + browser visual",
+      "status": "unverified",
+      "artifact": "evidence/verification.log",
+      "note": "DOM structure alone cannot satisfy the required rendered or keyboard check."
+    },
+    {
+      "id": "INV-04",
+      "requirement": "CTA names the action",
+      "method": "DOM",
+      "status": "pass",
+      "artifact": "evidence/verification.log",
+      "note": "Scoped to the local model/DOM contract; no real integration tested."
+    },
+    {
+      "id": "INV-05",
+      "requirement": "Active, Invited and Pending differ without color alone",
+      "method": "DOM + browser visual",
+      "status": "unverified",
+      "artifact": "evidence/verification.log",
+      "note": "DOM structure alone cannot satisfy the required rendered or keyboard check."
+    },
+    {
+      "id": "INV-06",
+      "requirement": "Duplicate sending is controlled",
+      "method": "model + DOM",
+      "status": "pass",
+      "artifact": "evidence/verification.log",
+      "note": "Scoped to the local model/DOM contract; no real integration tested."
+    },
+    {
+      "id": "INV-07",
+      "requirement": "Failure preserves email and role",
+      "method": "model + DOM",
+      "status": "pass",
+      "artifact": "evidence/verification.log",
+      "note": "Scoped to the local model/DOM contract; no real integration tested."
+    },
+    {
+      "id": "INV-08",
+      "requirement": "Error explains recovery",
+      "method": "DOM",
+      "status": "pass",
+      "artifact": "evidence/verification.log",
+      "note": "Scoped to the local model/DOM contract; no real integration tested."
+    },
+    {
+      "id": "INV-09",
+      "requirement": "Removal is named and keyboard-operable",
+      "method": "DOM + browser keyboard",
+      "status": "unverified",
+      "artifact": "evidence/verification.log",
+      "note": "DOM structure alone cannot satisfy the required rendered or keyboard check."
+    },
+    {
+      "id": "INV-10",
+      "requirement": "Main task is reachable at narrow and intermediate widths",
+      "method": "browser visual + keyboard",
+      "status": "unverified",
+      "artifact": "evidence/verification.log",
+      "note": "DOM structure alone cannot satisfy the required rendered or keyboard check."
+    },
+    {
+      "id": "INV-11",
+      "requirement": "No state falsely reports server success",
+      "method": "model + DOM",
+      "status": "pass",
+      "artifact": "evidence/verification.log",
+      "note": "Scoped to the local model/DOM contract; no real integration tested."
+    },
+    {
+      "id": "INV-12",
+      "requirement": "Preserve the five-seat limit and existing member data; no invented billing",
+      "method": "model",
+      "status": "pass",
+      "artifact": "evidence/verification.log",
+      "note": "Scoped to the local model/DOM contract; no real integration tested."
+    }
+  ],
+  "limitations": [
+    "Under-30-second completion target",
+    "Assistive-technology behavior",
+    "Contrast and rendered focus",
+    "General skill superiority"
+  ],
+  "benchmarkStatus": "incomplete: browser-dependent invariants remain unverified"
+}

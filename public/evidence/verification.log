@@ -1,0 +1,69 @@
+Recorded: 2026-09-25T16:40:50.774Z
+Revision: 2a0df632bfefeb4a1cfaa2ece76c185cf6dc1224
+Working tree dirty: true
+Source SHA-256: 1444333e09bbe20da0da4e144afc146427b9cdf1b9dc840988082912095e33ec
+Environment: v24.19.0 / linux
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node --test --test-reporter=spec tests/invite/model.test.mjs tests/invite/view.test.mjs tests/evidence.test.mjs
+✔ evidence loses validity when its saved assertion output changes or disappears (4.09544ms)
+✔ INV-06 / INV-11: pending does not succeed; repeated submit has one effect (12.040588ms)
+✔ INV-07 / INV-08: network failure retains exact draft and role; retry works (6.288789ms)
+✔ INV-12: five seats and existing records survive a successful invite (2.495016ms)
+✔ INV-12: service rechecks capacity when two clients contend for last seat (0.872904ms)
+✔ INV-06: duplicate addresses ignore casing; duplicate request IDs have one effect (2.424022ms)
+✔ INV-09 / INV-12: removal confirmation is cancelable; owner is protected (0.660017ms)
+✔ permission fixture blocks mutations; empty and full fixtures retain the limit (0.378234ms)
+✔ disposing a fixture cancels its pending effect (0.396351ms)
+✔ INV-01–05: labels, capacity, role meanings, specific CTA and status text (388.609216ms)
+✔ INV-01 / INV-08: validation associates an error and focuses the field (143.880732ms)
+✔ INV-06–08 / INV-11: actual form failure, retained input, retry and one new record (215.511541ms)
+✔ INV-09: named native buttons, confirmation cancellation and DOM focus return (107.38045ms)
+✔ preview remount preserves edits; fixture updates do not hijack toolbar focus (86.454046ms)
+✔ user content is escaped; flawed baseline preserves the same seed member names (48.499441ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2845.565958
+
+Exit: 0
+
+$ npm run build
+
+> staff-design-studio-showcase@1.0.0 build
+> vite build && mkdir -p dist/skills && cp -R skills/craft-product-ui dist/skills/
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.68 kB │ gzip:  0.41 kB
+dist/assets/index-CYQVCOxu.css  58.60 kB │ gzip: 13.56 kB
+dist/assets/index-Yel6Htu6.js   62.28 kB │ gzip: 21.58 kB
+✓ built in 359ms
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+Exit: 0
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/check-interactions.mjs
+PASS invite-team: preview selection, fixture controls, DOM focus return, comparison
+PASS operations-dashboard: preview selection, fixture controls, DOM focus return, comparison
+PASS pos-checkout: preview selection, fixture controls, DOM focus return, comparison
+PASS booking-recovery: preview selection, fixture controls, DOM focus return, comparison
+PASS arabic-admin-rtl: preview selection, fixture controls, DOM focus return, comparison
+PASS visual-deslop: preview selection, fixture controls, DOM focus return, comparison
+PASS home route
+
+Exit: 0
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/check-landings.mjs
+PASS Vectorline: route preview and demo boundary
+PASS Stillwater House: invalid date and sample stay calculation
+PASS Makan: RTL, event detail, invalid and valid email
+
+Exit: 0
+

@@ -2,6 +2,19 @@
 
 Use this reference before completing a coded interface. For substantial AI-generated UI also apply [ai-ux-quality-gates.md](ai-ux-quality-gates.md).
 
+Contents: [Preflight](#browser-preflight-and-slice-gate), [function](#functional-pass), [visuals](#visual-pass), [accessibility](#accessibility-pass), [responsive/localization](#responsive-and-localization-pass), [performance](#perceived-performance-pass), [engineering](#engineering-pass), [evidence](#evidence-ledger), [severity](#severity), [boundaries](#boundaries).
+
+## Browser preflight and slice gate
+
+Before expanding a substantial implementation, prove the verification path on its representative slice:
+
+1. Start the documented app command and open the actual route in an available browser.
+2. Save a rendered capture with route, viewport and locale; perform one product action and observe its result, including relevant runtime errors.
+3. Record the start/check commands, tested revision or content fingerprint, browser environment and artifact locations. Confirm the artifacts can be opened.
+4. Exercise the contract's main journey, recovery and blocking invariants before reusing the pattern on sibling screens.
+
+A running server or successful build does not pass browser preflight. If browser access fails, record the attempted command/tool and failure, continue useful bounded implementation/source checks, and report rendered/interaction checks unverified. Do not expand an unverified pattern as if this gate passed; surface the limitation before proposing additional scope. Do not install a browser framework solely for the gate.
+
 ## Functional pass
 
 - Start the application using the repository's documented command.
@@ -11,6 +24,8 @@ Use this reference before completing a coded interface. For substantial AI-gener
 - Test rapid/repeated input for duplicate-submit and async race failures.
 - Test unsaved edits, cancellation and scope switches where relevant.
 - Check runtime, console, hydration and network errors caused by the implementation.
+
+Test through product controls. A harness button that directly selects “success,” “error” or “loading” verifies a fixture's presentation only. To verify a transition, trigger the real form/action against a deterministic mock or authorized integration, observe pending and resulting states, and assert preserved values and effects. Keep fixture controls visibly separate from product navigation and record which mechanism produced each result. Mocks prove only the declared local contract.
 
 ## Visual pass
 
@@ -36,7 +51,7 @@ Inspect:
 - long/realistic content,
 - supported themes.
 
-Repeat the screenshot pass after fixes.
+For substantial visual work, retain the composition review described in [visual-direction.md](visual-direction.md). Repeat the affected screenshot pass after fixes.
 
 ## Accessibility pass
 
@@ -90,12 +105,16 @@ Measure performance only with the project's available tools. Do not invent metri
 
 ## Evidence ledger
 
-For substantial work record:
+For substantial work record a compact run header: timestamp, source revision plus content fingerprint when the tree is dirty or unversioned, included source/fixture/configuration paths, environment, startup/check commands, and deterministic scenario inputs. Fingerprint the relevant content (including dependency lockfile); a commit label alone cannot identify uncommitted code. Reuse the project's existing manifest format.
 
-| Criterion | Route/state | Viewport/input | Method | Observed result | Status | Evidence |
+| Requirement ID | Route/state | Viewport/input/locale | Method | Observed result | Status | Artifact |
 | --- | --- | --- | --- | --- | --- | --- |
 
-Use pass, fail or unverified. Record actual output; never infer test success from the existence of a test file.
+Use pass, fail, unverified or stale. Link the actual screenshot, trace, assertion output or review record to its run; record reviewer identity/role for judgments. Preserve artifacts with the handoff using the host's supported storage rather than relying on an ephemeral browser session. Redact sensitive data before saving.
+
+Record actual output; never infer success from a test file, screenshot filename or missing failure log. Source-only assertions cannot pass a rendered or interaction criterion. Record an inapplicable check with its reason instead of inventing a result.
+
+After a source, fixture, dependency or configuration change that can affect a criterion, mark its prior evidence stale and rerun the affected checks. Retain prior artifacts as historical evidence; do not relabel them with the new revision. Missing artifacts or unknown provenance make a claimed pass unverified. Report coverage and unresolved invariant IDs; a checked state catalog does not establish journey completion.
 
 ## Severity
 

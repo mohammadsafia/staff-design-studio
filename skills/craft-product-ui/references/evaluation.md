@@ -17,6 +17,20 @@ Use when assessing this skill, not during every UI task. Structure validation pr
 
 Run selected prompts in independent threads with raw inputs and minimum context. Do not leak expected findings into the task. Use isolated temporary work for test artifacts. Do not install, publish or perform real transactions.
 
+## Freeze a fair protocol
+
+Treat the task set above and repository showcases as development cases. Reserve held-out briefs, content fixtures and acceptance checks that were not used to tune the skill. Separate them before revision; do not call a renamed or lightly reworded showcase held out. Include more than one domain and preserve small-edit and read-only tasks so process cost and scope compliance are measured too.
+
+Before running comparisons, record:
+- skill revision, baseline definition and task split;
+- identical model/version, tools, starting repository, brief, content, allowed dependencies, time/token budget and stopping rule for each pair;
+- required task outcomes, invariant checks, visual-review rubric and disqualifying failures;
+- number of runs, run ordering/randomization and how failed or unavailable environments will be reported.
+
+Use fresh isolated contexts for each run. Keep prior solutions, reviewer findings and acceptance answers out of implementation context. A reviewer may receive the original requirements and raw artifacts; hide treatment labels and randomize presentation when judging appearance. Preserve checkable implementation and interaction evidence for behavioral review; screenshots alone cannot establish it.
+
+Use multiple runs where feasible and report their spread, failures and resource cost, not only the strongest output. If budgets, tools or environments differ, disclose the difference and limit the comparison. Do not retune on held-out results and keep calling the same set held out; move it to development and reserve new cases for the next claim.
+
 ## Compare with a baseline
 
 For empirical quality claims, use identical brief/content/stack/time budget with and without the skill.
@@ -65,4 +79,6 @@ A stronger skill should improve decision quality without making every task cerem
 
 ## Report honestly
 
-State what was exercised, evidence, failures and limitations. Planning-only scenarios do not establish rendered design quality. A benchmark suite specification is not a completed benchmark. Do not claim superiority over upstream projects without a fair executed comparison.
+State what was exercised, evidence, failures and limitations. Bind outputs, commands, review records and saved artifacts to each run's revision/content fingerprint using [implementation-qa.md](implementation-qa.md); label missing or superseded evidence unverified or stale. Report requirement-level results and blocker counts separately from visual preferences and any measured task outcomes.
+
+Planning-only scenarios do not establish rendered design quality. A benchmark suite specification is not a completed benchmark. A successful showcase is development evidence, not proof of generalization. Do not claim superiority over upstream projects without a fair executed comparison.
