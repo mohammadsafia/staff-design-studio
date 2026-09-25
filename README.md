@@ -2,6 +2,52 @@
 
 A reusable UI/UX skill for evidence-aware product design, distinctive visual direction, working product journeys, responsive implementation, accessibility, and reproducible review.
 
+## Showcase
+
+The runnable Vite site includes six before/after workbenches and three landing-page demos, built using `craft-product-ui`. Its message is **“Design judgment your coding agent can prove.”** Each workbench exposes findings, fixture controls, preview widths, source references and evidence limits. Everything runs locally in memory; there are no real invitations, payments, bookings or authorization changes.
+
+The canonical benchmark definitions now live under [`showcases/`](showcases/README.md). The early presentation demos predate those definitions. This revision reconciles the current briefs and implements **Invite the Team as the first executable product slice**. The other five demos are explicitly labeled presentation drafts; their benchmark workflows remain to be implemented. No case is claimed to have passed browser acceptance.
+
+| Case | Current implementation and limits |
+| --- | --- |
+| **Invite the Team** | Editable email and role, five-seat capacity, retained drafts on failure, retry, duplicate protection, named removal with confirmation, empty/full/permission fixtures. Model and DOM assertions run; browser acceptance pending. |
+| Operations Dashboard | Presentation draft of a dispatch exception. Does not yet implement the canonical 120-store filter/permission workflow. |
+| POS Checkout | Presentation draft of a checkout. Does not yet implement the canonical mutable cart and terminal outcome contract. |
+| Booking Recovery | Presentation draft of appointment recovery. Does not yet implement the canonical hotel inventory/price recheck. |
+| Arabic Admin / RTL | Arabic presentation draft with mixed identifiers. Does not yet implement the canonical hotel inventory drawer or verified Arabic keyboard behavior. |
+| Visual De-slop Without Rebranding | Presentation draft of invoice review. Does not yet demonstrate the canonical neutral-palette preservation constraints. |
+
+The landing pages are **Vectorline** (`?landing=landing-vectorline`), **Stillwater House** (`?landing=landing-stillwater`) and **مَكان** (`?landing=landing-makan`). They contain deterministic route inspection, sample stay calculation and an Arabic event/email form respectively. No live service is connected. Their guidance is in [`landing-pages.md`](skills/craft-product-ui/references/landing-pages.md).
+
+### Run and inspect
+
+```bash
+npm ci
+npm run dev -- --host 127.0.0.1
+```
+
+Open `http://127.0.0.1:5173/`. Use `/#invite-team` for comparison, or `/?benchmark=invite-team` for the same working component at the actual browser viewport width. Preview view/width controls preserve a draft; choosing a fixture resets it. The error fixture fails once so the real form can be retried. The success fixture waits for a local service result; it does not directly select a completion screen.
+
+```bash
+npm run test:invite     # Local model and DOM assertions
+npm run verify          # Product + evidence integrity tests, build, demo regressions, evidence output
+npm run build           # Static site and skill references in dist/
+```
+
+`npm run verify` saves [assertion output](public/evidence/verification.log) and a [requirement-level evidence manifest](public/evidence/invite-team.json). The manifest records the source SHA-256, tested git revision, dirty-tree flag, inputs, environment and artifact hash. On build, the site marks evidence stale if source content or its saved assertion output changed. This command never records a browser pass. The PR workflow runs these checks and uploads the evidence; the Pages workflow builds the site from `main` when GitHub Pages is configured for Actions. Neither workflow has been observed running for this branch.
+
+### Verification and remaining work · 2026-09-25
+
+Model/DOM tests cover actual form submission, invalid and duplicate input, retained email/role after failure, retry, one effect per repeated request, concurrent claims on the final seat, preservation of existing people, removal/cancel focus handling, permission fixtures and cancellation of abandoned requests. Existing DOM regressions cover six comparison shells and three landing-page interactions. They do **not** establish visual quality, tab traversal, browser accessibility or responsive layout.
+
+Vite started on loopback. The available cloud browser refused `http://127.0.0.1:5173/?benchmark=invite-team` with `ERR_BLOCKED_BY_CLIENT`. Actual 390/820/1440 px inspection, physical keyboard use, visible focus, contrast, assistive technology and final screenshots are **unverified**. No screenshots are presented as captured. The under-30-second target is unmeasured.
+
+See the [Invite contract](showcases/01-invite-team/contract.json) and [decision/review record](showcases/01-invite-team/REVIEW.md) for assumptions, exact coverage and the remaining browser procedure. Complete those checks before treating the slice as a reusable verified pattern or expanding acceptance claims to the other cases.
+
+### Skill improvements in this revision
+
+The compact core now routes substantial work through requirement IDs and blocking invariants, an early browser preflight, real product transitions, revision-bound evidence, concrete composition-review artifacts, Arabic/mixed-direction pressure checks and a held-out evaluation protocol. These changes respond to observed gaps in the earlier demos; they are not proof of general skill superiority.
+
 **Skill name:** `craft-product-ui`  
 **Display name:** Staff Design Studio
 
@@ -166,7 +212,7 @@ Includes discovery, exploration, build, audit, restyle, hardening, and polish wo
 
 Generated interfaces are treated as design hypotheses until applicable journey, interaction, accessibility, responsive, and visual checks are performed. Human/user validation remains necessary when uncertainty or consequence warrants it.
 
-Used in constructed before/after demonstrations and a bilingual eight-page NEU public website prototype. These exercises are not controlled benchmarks and do not prove general superiority or production readiness. Neither website source nor customer material is bundled here.
+Used in constructed before/after demonstrations and a bilingual eight-page NEU public website prototype. These exercises are not controlled benchmarks and do not prove general superiority or production readiness. The showcase source is bundled here; the separate NEU prototype and customer material are not.
 
 ## Attribution and research
 

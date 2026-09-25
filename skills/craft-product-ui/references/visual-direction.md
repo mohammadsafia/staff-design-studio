@@ -2,6 +2,8 @@
 
 Use this reference when creating or substantially changing an interface's visual language.
 
+Contents: [Direction](#derive-rather-than-decorate), [composition](#composition-and-visual-weight), [typography](#typography), [density](#density-and-rhythm), [color](#color-and-surfaces), [media](#imagery-and-illustration), [signature](#create-a-signature-without-friction), [comparison](#originality-check), [review artifact](#composition-review-artifact), [removal](#removal-pass), [motion](#motion).
+
 ## Derive rather than decorate
 
 Build the direction from four inputs: audience, job, content, and two or three compatible character traits such as precise, calm, tactile, bold, editorial, technical, warm, or premium.
@@ -121,6 +123,19 @@ For each candidate state:
 - main tradeoff,
 - implementation cost,
 - evidence that would make you reject it.
+
+## Composition review artifact
+
+For substantial new direction, retain a small comparison sheet or linked captures with candidate IDs, identical realistic content/state, desktop and narrow viewport sizes, and the selected candidate. Label wireframes, static concepts and live rendered UI accurately. If alternatives were not rendered, record them as proposed concepts; do not claim a completed visual study. Existing-system work can use baseline versus changed captures with the reason exploration was unnecessary.
+
+Attach a concise review record to actual captures:
+- identify the primary task and intended first/second reading targets;
+- annotate the region where hierarchy, grouping, density, wrapping or action placement helps or obstructs that task;
+- state each candidate's material tradeoff and the reason for selection;
+- for each correction, identify its capture/region, requirement ID when applicable, severity, concrete change and observable retest;
+- link the final reviewed captures to their revision/content fingerprint per [implementation-qa.md](implementation-qa.md).
+
+Compare composition before surface effects; check whether grouping and emphasis survive grayscale without treating grayscale as a contrast test. Distinguish observed layout defects, reviewer preference and user evidence. A screenshot diff can locate change but does not measure design quality. If captures are unavailable, leave visual judgments unverified and retain the proposed review criteria.
 
 ## Removal pass
 

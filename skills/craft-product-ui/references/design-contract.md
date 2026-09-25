@@ -19,6 +19,20 @@ Label each item as supplied, observed, researched, measured, or assumed. Keep du
 
 For consequential uncertainty, link or include the evidence ledger from [research-and-evidence.md](research-and-evidence.md).
 
+## Requirement map and invariants
+
+For substantial implementation, assign stable IDs to the supplied acceptance criteria in the maintained contract. Preserve their wording/source and map each to an observable check; record assumptions separately. Reuse existing issue or specification IDs. A small fix needs only its affected criterion and check, not a new document.
+
+| ID / source | Required behavior | Owner / implementation | Observable check | Evidence / status |
+| --- | --- | --- | --- | --- |
+| INV-03 / invitation brief | A failed invitation preserves the entered address and role | Invitation form / submit handler | Enter both fields, submit with a deterministic failure, verify values, correct and retry | Link actual run; unverified until executed |
+
+Include the applicable route/state, data boundary and responsive/locale constraints in the row or linked check. Map every required action and recovery path; do not substitute a generic component checklist for the brief. Distinguish implemented, deferred with authorization, and unimplemented scope from verification status. An implementation reference alone is not a pass.
+
+Name the invariants whose failure blocks completion: for example, no success before a confirmed result, no loss of valid input on retry, no duplicate effect on repeated submission, or no essential action inaccessible by keyboard. Specify the expected outcome and assertion for each; do not adopt examples that the workflow does not require.
+
+Before expanding a slice, apply [implementation-qa.md](implementation-qa.md). A failed invariant blocks expansion; a missing check remains unverified. Carry unresolved requirements forward explicitly rather than deleting them or averaging them into a quality score. Update mappings when the accepted scope changes.
+
 ## Design truth
 
 Record:

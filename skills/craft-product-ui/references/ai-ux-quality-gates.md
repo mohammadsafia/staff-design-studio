@@ -91,13 +91,7 @@ Reject “generic AI SaaS” composition when it is unrelated to the product’s
 
 ## Gate 8: Evidence review
 
-For substantial work maintain an evidence ledger:
-- criterion,
-- method,
-- observed result,
-- pass/fail/unverified,
-- evidence location,
-- remaining risk.
+For substantial work use the requirement-linked, revision-bound evidence ledger in [implementation-qa.md](implementation-qa.md). Report failed invariants, stale evidence and unverified checks explicitly.
 
 Do not convert agent self-critique into independent validation.
 

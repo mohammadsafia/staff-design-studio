@@ -1,6 +1,6 @@
 ---
 name: craft-product-ui
-description: Staff Design Studio for designing, building, redesigning, and reviewing web product interfaces. Coordinate research evidence, UX architecture, visual exploration, design systems, implementation, accessibility, and independent QA for substantial work. Use for distinctive UI, non-generic AI-generated design, SaaS/admin workflows, creative frontend work, design critique, restyling, and interaction hardening. Keep audit and planning requests read-only. Exclude backend-only tasks.
+description: Staff Design Studio for designing, building, redesigning, and reviewing web product interfaces and public landing pages. Coordinate research evidence, UX architecture, visual exploration, design systems, implementation, accessibility, and independent QA for substantial work. Use for distinctive UI, non-generic AI-generated design, SaaS/admin workflows, landing-page conversion paths, creative frontend work, design critique, restyling, and interaction hardening. Keep audit and planning requests read-only. Exclude backend-only tasks.
 ---
 
 # Staff Design Studio
@@ -31,6 +31,7 @@ Load only what the task needs:
 
 - Uncertain user needs, claims, analytics, research or assumptions: [research-and-evidence.md](references/research-and-evidence.md).
 - New visual language or exploration: [visual-direction.md](references/visual-direction.md).
+- Public landing pages, campaign pages, marketing journeys or conversion paths: [landing-pages.md](references/landing-pages.md).
 - Journey/state coverage and failure recovery: [ux-and-states.md](references/ux-and-states.md).
 - Audit or redesign diagnosis: [usability-heuristics.md](references/usability-heuristics.md).
 - Navigation, routing, scope or information architecture: [navigation-and-ia.md](references/navigation-and-ia.md).
@@ -40,7 +41,7 @@ Load only what the task needs:
 - SaaS/admin/POS, dashboards, tables, filters or operational tools: [data-dense-products.md](references/data-dense-products.md).
 - Responsive layout, mobile adaptation, RTL or multiple input modes: [responsive-and-input.md](references/responsive-and-input.md).
 - Animation, progress, optimistic UI or notifications: [motion-and-feedback.md](references/motion-and-feedback.md).
-- Product-wide work or design drift: [design-contract.md](references/design-contract.md).
+- Substantial implementation, requirement mapping or design drift: [design-contract.md](references/design-contract.md).
 - AI-generated or AI-refactored substantial UI: [ai-ux-quality-gates.md](references/ai-ux-quality-gates.md).
 - Delegated substantial work: [agent-team.md](references/agent-team.md) and the assigned role file.
 - Any implementation completion or review: [implementation-qa.md](references/implementation-qa.md).
@@ -73,17 +74,19 @@ Use references as evidence for a specific property, not as templates to copy who
 
 Resolve conflicts in this order: authority and explicit requirements; safe and accessible task completion; established product behavior and system compatibility; maintainability/performance; aesthetic preferences. Explain genuine conflicts rather than silently discarding a requirement.
 
-Record accepted direction, rejected alternatives, evidence, tokens, component states, responsive adaptations, content rules and exceptions. Existing code is evidence of the current system, not proof every inconsistency is intentional. Propose the smallest coherent correction.
+Record accepted direction, rejected alternatives, evidence, tokens, component states, responsive adaptations, content rules and exceptions. For substantial implementation, map stable requirement IDs to behavior, code and observable checks in the design contract; name invariants that block completion. Existing code is evidence of the current system, not proof every inconsistency is intentional. Propose the smallest coherent correction.
 
 Do not enforce universal bans on fonts, colors, cards, gradients or rounded corners. Their appropriateness depends on the brief. Do not replace one recognizable AI template with another.
 
 ## 4. Implement the smallest complete slice
 
-Preserve the stack and existing primitives. Assign one owner to shared tokens, global CSS and shared components. Build a representative journey with realistic data, recovery states, responsive behavior, semantic controls and accessibility before expanding to sibling screens.
+Preserve the stack and existing primitives. Assign one owner to shared tokens, global CSS and shared components. Build a representative journey with realistic data, recovery states, responsive behavior, semantic controls and accessibility. Pass the browser preflight and slice gates in [implementation-qa.md](references/implementation-qa.md) before expanding to sibling screens.
 
-Distinguish prototype simulation from actual server persistence and authorization. Never imply UI role hiding secures an API, fake payment success proves a transaction, or a toast proves a save. Label unavailable integrations and mock-only behavior.
+Distinguish prototype simulation from actual server persistence and authorization. Harness state selectors expose fixtures; only product actions exercise product transitions. Never imply UI role hiding secures an API, fake payment success proves a transaction, or a toast proves a save. Label unavailable integrations and mock-only behavior.
 
 Use purpose-specific motion with interruption handling and reduced-motion alternatives. Keep truthful feedback ahead of ornament. Do not add dependencies or external services solely because an upstream example uses them.
+
+For landing pages, trace the primary CTA through its actual destination or form outcome. Make constructed content and local-only interactions explicit, and verify that route and section-anchor models do not collide.
 
 For AI-generated implementation, treat the output as a hypothesis. Apply the AI UX quality gates before scaling a pattern across multiple screens.
 
@@ -101,7 +104,7 @@ Review against:
 - performance/perceived responsiveness,
 - product-specific visual quality.
 
-Track findings with severity, evidence, reproduction, proposed correction and retest. Fix blockers before aesthetic refinement. After fixes, review the actual changed state again. Stop after two critique/fix cycles by default; disclose unresolved issues and ask before a costly expansion. Never lower the acceptance bar to claim completion.
+Track findings with severity, evidence, reproduction, proposed correction and retest. Bind evidence to the tested revision/content fingerprint and saved artifacts; mark affected evidence stale after changes. Fix blockers before aesthetic refinement. After fixes, review the actual changed state again. Stop after two critique/fix cycles by default; disclose unresolved issues and ask before a costly expansion. Never lower the acceptance bar to claim completion.
 
 No screenshot access: report visual QA unverified. No runnable environment: report behavior unverified. No assistive-technology test: do not claim full accessibility compliance. Source inspection, build success and reviewer agreement do not establish usability or freedom from bugs.
 

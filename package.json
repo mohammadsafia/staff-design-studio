@@ -1,0 +1,18 @@
+{
+  "name": "staff-design-studio-showcase",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build && mkdir -p dist/skills && cp -R skills/craft-product-ui dist/skills/",
+    "test:interactions": "npm run build && node scripts/check-interactions.mjs && node scripts/check-landings.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "test:invite": "node --test tests/invite/*.test.mjs",
+    "verify": "node scripts/verify.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.1",
+    "vite": "^7.1.0"
+  }
+}
